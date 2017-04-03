@@ -14,7 +14,7 @@ if __name__ == "__main__":
     header = lines.first() #extract header
     data = lines.filter(lambda x: x != header) 
 #update column number
-    col_num=0
+    col_num=6
     
     
     def assign_types(rows, col_num):
@@ -23,15 +23,20 @@ if __name__ == "__main__":
             value = int(rows[col_num])
             data_type = 'INT'
             
-            if len(str(rows[col_num])) == 9:
-                semantic_type = 'COMPLAINT NUMBER'
+            if len(str(rows[col_num])) == 3:
+                semantic_type = 'KEY CODE'
                 valid_ind = 'VALID'
             else:
                 semantic_type = 'UNKONWN'
                 valid_ind = 'INVALID/OUTLIER'
                 
         except ValueError:
-            data_type = 'OTHER' 
+            data_type = 'STR' 
+            semantic_type = 'UNKNOWN'
+            if rows[col_num] == '':
+                valid_ind='NULL'
+            else:
+                valid_ind = 'INVALID/OUTLIER'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            
              
