@@ -22,10 +22,10 @@ if __name__ == "__main__":
         semantic_type = 'CRIME CATEGORY'
         data_type = 'STR'
         if rows[col_num] == '':
-		    valid_ind='NULL'
-		else if (rows[col_num] == 'FELONY' or rows[col_num] == 'MISDEMEANOR' or rows[col_num] == 'VIOLATION'):
-		    valid _ind = 'VALID'
-		else:
+            valid_ind='NULL'
+        elif (rows[col_num] == 'FELONY' or rows[col_num] == 'MISDEMEANOR' or rows[col_num] == 'VIOLATION'):
+            valid_ind = 'VALID'
+        else:
             valid_ind = 'INVALID/OUTLIER'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            

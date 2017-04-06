@@ -19,18 +19,16 @@ if __name__ == "__main__":
     
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
+        data_type = 'DATETIME'
+        semantic_type = 'HH:MM:SS'
         try:
             hour = int(rows[col_num][0:2])
             min = int(rows[col_num][3:5])
             sec = int(rows[col_num][6:8])
             value = datetime.time(hour,min,sec)
-            data_type = 'DATETIME'
-            semantic_type = 'HH:MM:SS'
             valid_ind = 'VALID'
             
         except ValueError:
-            data_type = 'STR' 
-            semantic_type = 'UNKNOWN'
             if rows[col_num] == '':
                 valid_ind='NULL'
             else:

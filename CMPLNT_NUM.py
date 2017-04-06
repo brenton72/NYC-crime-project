@@ -18,20 +18,19 @@ if __name__ == "__main__":
     
     
     def assign_types(rows, col_num):
+    
+        data_type = 'INT'
+        semantic_type = 'COMPLAINT NUMBER'
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
         try:
             value = int(rows[col_num])
-            data_type = 'INT'
-            
             if len(str(rows[col_num])) == 9:
-                semantic_type = 'COMPLAINT NUMBER'
                 valid_ind = 'VALID'
             else:
-                semantic_type = 'UNKONWN'
                 valid_ind = 'INVALID/OUTLIER'
                 
         except ValueError:
-            data_type = 'OTHER' 
+                valid_ind = 'INVALID/OUTLIER'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            
              

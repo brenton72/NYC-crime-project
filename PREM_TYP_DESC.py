@@ -4,7 +4,6 @@ import sys
 from operator import add
 from csv import reader
 from pyspark import SparkContext
-import datetime
 
 
 if __name__ == "__main__":
@@ -15,24 +14,19 @@ if __name__ == "__main__":
     header = lines.first() #extract header
     data = lines.filter(lambda x: x != header) 
 #update column number
-    col_num=4
+    col_num=16
+    
     
     def assign_types(rows, col_num):
+    
+        data_type='STR'
+        semantic_type='PREMISES'
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
-        data_type = 'DATETIME'
-        semantic_type = 'HH:MM:SS'
-        try:
-            hour = int(rows[col_num][0:2])
-            min = int(rows[col_num][3:5])
-            sec = int(rows[col_num][6:8])
-            value = datetime.time(hour,min,sec)
-            valid_ind = 'VALID'
-            
-        except ValueError:
-            if rows[col_num] == '':
-                valid_ind='NULL'
-            else:
-                valid_ind = 'INVALID/OUTLIER'
+        
+        if rows[col_num] == '':
+            valid_ind='NULL'
+        else:
+            valid_ind='VALID'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            
              

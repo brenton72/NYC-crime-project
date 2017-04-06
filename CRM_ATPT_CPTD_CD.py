@@ -22,10 +22,10 @@ if __name__ == "__main__":
         semantic_type = 'COMPLETED/ATTEMPTED INDICATOR'
         data_type = 'STR'
         if rows[col_num] == '':
-		    valid_ind='NULL'
-		else if (rows[col_num] == 'COMPLETED' or rows[col_num] == 'ATTEMPTED'):
-		    valid _ind = 'VALID'
-		else:
+            valid_ind='NULL'
+        elif (rows[col_num] == 'COMPLETED' or rows[col_num] == 'ATTEMPTED'):
+            valid_ind = 'VALID'
+        else:
             valid_ind = 'INVALID/OUTLIER'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            

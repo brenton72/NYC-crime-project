@@ -19,20 +19,17 @@ if __name__ == "__main__":
     
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
+        data_type = 'INT'
+        semantic_type = 'KEY CODE'
         try:
             value = int(rows[col_num])
-            data_type = 'INT'
             
             if len(str(rows[col_num])) == 3:
-                semantic_type = 'KEY CODE'
                 valid_ind = 'VALID'
             else:
-                semantic_type = 'UNKONWN'
                 valid_ind = 'INVALID/OUTLIER'
                 
         except ValueError:
-            data_type = 'STR' 
-            semantic_type = 'UNKNOWN'
             if rows[col_num] == '':
                 valid_ind='NULL'
             else:

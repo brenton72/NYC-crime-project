@@ -22,9 +22,9 @@ if __name__ == "__main__":
         semantic_type = 'NYC PARK NAME'
         data_type = 'STR'
         if rows[col_num] == '':
-		    valid_ind='NULL'
-		else:
-		    valid _ind = 'VALID'
+            valid_ind='NULL'
+        else:
+            valid_ind = 'VALID'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            
              

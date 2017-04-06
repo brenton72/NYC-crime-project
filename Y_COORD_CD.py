@@ -24,7 +24,7 @@ if __name__ == "__main__":
         try:
             value = int(rows[col_num])
             valid_ind = 'VALID'
-			
+            
         except ValueError:
             if rows[col_num] == '':
                 valid_ind='NULL'

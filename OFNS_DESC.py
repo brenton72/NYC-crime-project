@@ -18,15 +18,14 @@ if __name__ == "__main__":
     
     
     def assign_types(rows, col_num):
+    
+        data_type='STR'
+        semantic_type='OFFENSE DESCRIPTION'
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
         
         if rows[col_num] == '':
-            data_type='UNKNOWN'
-            semantic_type='UNKNOWN'
             valid_ind='NULL'
         else:
-            data_type='STR'
-            semantic_type='OFFENSE DESCRIPTION'
             valid_ind='VALID'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            

@@ -19,13 +19,13 @@ if __name__ == "__main__":
     
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
+        data_type = 'DATETIME'
+        semantic_type = 'DD/MM/YYYY'
         try:
             year = int(rows[col_num][6:])
             day = int(rows[col_num][3:5])
             month = int(rows[col_num][0:2])
             value = datetime.datetime(year,month,day)
-            data_type = 'DATETIME'
-            semantic_type = 'DD/MM/YYYY'
 #Data is valid for reported dates between 2006-2015.  
             if year<2006 or year > 2015:
                 valid_ind = 'INVALID/OUTLIER'
@@ -33,8 +33,6 @@ if __name__ == "__main__":
                 valid_ind = 'VALID'
             
         except ValueError:
-            data_type = 'STR' 
-            semantic_type = 'UNKNOWN'
             if rows[col_num] == '':
                 valid_ind='NULL'
             else:

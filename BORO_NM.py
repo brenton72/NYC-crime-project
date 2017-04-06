@@ -22,10 +22,10 @@ if __name__ == "__main__":
         semantic_type = 'BOROUGH'
         data_type = 'STR'
         if rows[col_num] == '':
-		    valid_ind='NULL'
-		else if (rows[col_num] == 'BRONX' or rows[col_num] == 'BROOKLYN' or rows[col_num] == 'MANHATTAN' or rows[col_num] == 'QUEENS' or rows[col_num] == 'STATEN ISLAND'):
-		    valid _ind = 'VALID'
-		else:
+            valid_ind='NULL'
+        elif (rows[col_num] == 'BRONX' or rows[col_num] == 'BROOKLYN' or rows[col_num] == 'MANHATTAN' or rows[col_num] == 'QUEENS' or rows[col_num] == 'STATEN ISLAND'):
+            valid_ind = 'VALID'
+        else:
             valid_ind = 'INVALID/OUTLIER'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            
