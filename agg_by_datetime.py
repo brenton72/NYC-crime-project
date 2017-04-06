@@ -53,6 +53,21 @@ if __name__ == "__main__":
     by_hour = rdd.map(lambda x: (x[1][3],1)).reduceByKey(add).sortBy(lambda x: -x[1])
     by_hour.saveAsTextFile('by_hour.out')
     
-
-
+#Borough/Hour aggregation
+    def get_hour(rows):
+        try:
+            hour = int(rows[2][0:2])           
+        except ValueError:
+            hour = 99     
+        return ((rows[13],hour),1)
+    rdd = data.map(lambda x: get_hour(x))
+    by_boro_hr = rdd.reduceByKey(add).sortByKey()
+    by_boro_hr.saveAsTextFile('by_boro_hr.out')
+    
+    by_boro = by_boro_hr.map(lambda x: (x[0][0],(x[0][1],x[1])))
+    max_hr = by_boro.reduceByKey(lambda x1,x2:max(x1,x2,key=lambda x:x[-1]))
+    max_hr.saveAsTextFile('max_hr.out')
+    min_hr = by_boro.reduceByKey(lambda x1,x2:min(x1,x2,key=lambda x:x[-1]))
+    min_hr.saveAsTextFile('min_hr.out')
+    
     sc.stop()
