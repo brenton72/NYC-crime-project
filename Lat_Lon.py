@@ -19,7 +19,7 @@ if __name__ == "__main__":
     
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
-        semantic_type = 'LAT-LON'
+        semantic_type = 'LON-LAT'
         data_type = 'STR'
         if rows[col_num] == '':
             valid_ind='NULL'
