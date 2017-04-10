@@ -14,24 +14,17 @@ if __name__ == "__main__":
     header = lines.first() #extract header
     data = lines.filter(lambda x: x != header) 
 #update column number
-    col_num=14
+    col_num=23
     
     
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
-
-#verified in ipython notebook that all values are valid precincts
-        semantic_type = 'PRECINCT'
-        data_type = 'INT'
-        try:
-            value = int(rows[col_num])
+        semantic_type = 'LON-LAT'
+        data_type = 'STR'
+        if rows[col_num] == '':
+            valid_ind='NULL'
+        else:
             valid_ind = 'VALID'
-                
-        except ValueError:
-            if rows[col_num] == '':
-                valid_ind='NULL'
-            else:
-                valid_ind = 'INVALID/OUTLIER'
         
         return (header[col_num],(rows[col_num],data_type,semantic_type,valid_ind))            
              

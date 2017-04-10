@@ -14,18 +14,20 @@ if __name__ == "__main__":
     header = lines.first() #extract header
     data = lines.filter(lambda x: x != header) 
 #update column number
-    col_num=14
+    col_num=8
     
     
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
-
-#verified in ipython notebook that all values are valid precincts
-        semantic_type = 'PRECINCT'
+        semantic_type = 'CLASSIFICATION CODE'
         data_type = 'INT'
         try:
             value = int(rows[col_num])
-            valid_ind = 'VALID'
+            
+            if len(str(rows[col_num])) == 3:
+                valid_ind = 'VALID'
+            else:
+                valid_ind = 'INVALID/OUTLIER'
                 
         except ValueError:
             if rows[col_num] == '':

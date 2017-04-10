@@ -14,19 +14,17 @@ if __name__ == "__main__":
     header = lines.first() #extract header
     data = lines.filter(lambda x: x != header) 
 #update column number
-    col_num=14
+    col_num=19
     
     
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
-
-#verified in ipython notebook that all values are valid precincts
-        semantic_type = 'PRECINCT'
+        semantic_type = 'X COORDINATE'
         data_type = 'INT'
         try:
             value = int(rows[col_num])
             valid_ind = 'VALID'
-                
+            
         except ValueError:
             if rows[col_num] == '':
                 valid_ind='NULL'
