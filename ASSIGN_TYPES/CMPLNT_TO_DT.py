@@ -27,7 +27,7 @@ if __name__ == "__main__":
             month = int(rows[col_num][0:2])
             value = datetime.datetime(year,month,day)
 #We assume dates <=2015 are valid complaint dates
-            if year > 2015:
+            if year > 2015 or year <1965:
                 valid_ind = 'INVALID/OUTLIER'
             else:
                 valid_ind = 'VALID'
