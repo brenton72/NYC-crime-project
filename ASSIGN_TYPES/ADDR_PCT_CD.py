@@ -20,12 +20,20 @@ if __name__ == "__main__":
     def assign_types(rows, col_num):
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
 
+#dictionary of valid precinct ranges generated from https://www.nytimes.com/2017/03/17/nyregion/nypd-precincts.html?_r=0
+        valid_pct = {'MANHATTAN':[1,34],'BRONX':[40,52],'BROOKLYN':[60,94],'QUEENS':[100,115],'STATEN ISLAND':[120,123]}
+
 #verified in ipython notebook that all values are valid precincts
         semantic_type = 'PRECINCT'
         data_type = 'INT'
         try:
             value = int(rows[col_num])
+            boro = rows[col_num - 1]
             valid_ind = 'VALID'
+            if value < valid_pct[boro][0]:
+                valid_ind = 'INVALID/OUTLIER'
+            if value > valid_pct[boro][1]:
+                valid_ind = 'INVALID/OUTLIER'
                 
         except ValueError:
             if rows[col_num] == '':
