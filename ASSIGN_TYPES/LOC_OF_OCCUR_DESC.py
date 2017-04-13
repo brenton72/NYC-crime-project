@@ -21,7 +21,7 @@ if __name__ == "__main__":
 #creates rdd with key as col name, values {data_type,semantic_type,valid_ind}
         semantic_type = 'LOCATION'
         data_type = 'STR'
-        if rows[col_num] == '':
+        if rows[col_num] == '' or rows[col_num] == ' ':
             valid_ind='NULL'
         else:
             valid_ind = 'VALID'
