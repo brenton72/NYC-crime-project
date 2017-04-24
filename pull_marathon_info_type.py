@@ -45,6 +45,11 @@ if __name__ == "__main__":
             lwk = dt - timedelta(days=7)
             if dt in NYC_Marathons_dts:
                 test_group = 1
+            elif lwk == datetime.datetime(2007,11,4):
+                dt = datetime.datetime(1000, 1, 1)
+                test_group = -9
+            elif dt == datetime.datetime(2007,10,28):
+                test_group = 0
             elif lwk in NYC_Marathons_dts:
                 test_group = 0
             else:
