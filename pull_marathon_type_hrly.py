@@ -65,8 +65,8 @@ if __name__ == "__main__":
         if dt == datetime.datetime(1000, 1, 1):
             hour = 99
             wkday = -99
-        return ((rows[13],dt,test_group),1)
+        return ((rows[11],dt,test_group,hour),1)
     rdd = data.map(lambda x: get_wkday_hour(x))
     by_type_wkday_hr = rdd.reduceByKey(add).sortByKey()
-    by_type_wkday_hr.saveAsTextFile('marathon_info_boro.out')
+    by_type_wkday_hr.saveAsTextFile('marathon_type_hrly.out')
     sc.stop()
