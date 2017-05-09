@@ -12,9 +12,11 @@ Link to NYC Census Tract GeoJson File: http://services5.arcgis.com/GfwWNkhOj9bNB
 Link to NYC Zip Code GeoJson File:
 http://catalog.civicdashboards.com/dataset/11fd957a-8885-42ef-aa49-5c879ec93fac/resource/28377e88-8a50-428f-807c-40ba1f09159b/download/nyc-zip-code-tabulation-areas-polygons.geojson
 
-Type the following lines before running the "agg_by_dow_dst_hr_type.py" program:
-- module load python/gnu/3.4.4 
+Type the following lines before running the "agg_by_dow_dst_hr_type.py" or "pull_dstweek_hour_type.py" programs:
+- module load python/gnu/3.4.4
 - export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python
+- export PYTHONHASHSEED=0
+- export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
 
 To view base/semantic type and validity of each column, see README.md inside folder ASSIGN_TYPES.
 
@@ -37,6 +39,7 @@ The .py files will generate the following summary counts:
 - agg_by_ymd_boro.py: Aggregates by year, month, day and boro
 - by_boro_viol.py: Aggregates by boro and violation type
 - by_latlon.py: Aggregates by latitude-longuitude pair
+- pull_dstweek_hour_type.py: Extracts data from the first/last week of DST as a test case and the non-DST week bordering it as a control case
 - pull_marathon_boro_hrly.py: Aggregates data by hour, boro, and whether it occurred on a Marathon/Half Marathon day or the week after one
 - pull_marathon_info_boro.py: Aggregates data by boro, and whether it occurred on a Marathon/Half Marathon day or the week after one
 - pull_marathon_type_hrly.py: Aggregates data by hour, crime type (Felony, etc.), and whether it occurred on a Marathon/Half Marathon day or the week after one
