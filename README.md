@@ -39,7 +39,8 @@ The .py files will generate the following summary counts:
 - agg_by_ymd_boro.py: Aggregates by year, month, day and boro
 - by_boro_viol.py: Aggregates by boro and violation type
 - by_latlon.py: Aggregates by latitude-longuitude pair
-- pull_dstweek_hour_type.py: Extracts data from the first/last week of DST as a test case and the non-DST week bordering it as a control case
+- pull_dstweek_boro.py: Aggregates by borough and extracts data from the first/last week of DST as a test case and the non-DST week bordering it as a control case
+- pull_dstweek_type.py: Aggregates by type (Felony, etc.) and extracts data from the first/last week of DST as a test case and the non-DST week bordering it as a control case
 - pull_marathon_boro_hrly.py: Aggregates data by hour, boro, and whether it occurred on a Marathon/Half Marathon day or the week after one
 - pull_marathon_info_boro.py: Aggregates data by boro, and whether it occurred on a Marathon/Half Marathon day or the week after one
 - pull_marathon_type_hrly.py: Aggregates data by hour, crime type (Felony, etc.), and whether it occurred on a Marathon/Half Marathon day or the week after one
